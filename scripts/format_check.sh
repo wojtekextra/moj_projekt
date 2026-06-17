@@ -1,3 +1,3 @@
 #!/bin/bash
 source venv/bin/activate
-black --check .
+python3 -m black --check --exclude '/venv/|/build/|/dist/' .
