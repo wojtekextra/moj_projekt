@@ -8,7 +8,7 @@ authors = [
 requires-python = ">=3.11"
 
 [project.urls]
-"Homepage" = "https://example.com"
+Homepage = "https://example.com"
 
 [project.optional-dependencies]
 dev = ["pytest", "black", "pylint"]
@@ -40,7 +40,7 @@ jobs = 1
 [tool.pylint.FORMAT]
 max-line-length = 88
 
-[tool.pylint.MESSAGES CONTROL]
+[tool.pylint."MESSAGES CONTROL"]
 disable = [
     "C0114",
     "C0115",
