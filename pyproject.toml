@@ -1,0 +1,48 @@
+[project]
+name = "moj_projekt"
+version = "0.1.0"
+description = "Kalkulator matematyczny z arytmetyką, trygonometrią, logarytmami, statystyką i geometrią."
+authors = [
+    { name = "Autor" }
+]
+requires-python = ">=3.11"
+
+[project.urls]
+"Homepage" = "https://example.com"
+
+[project.optional-dependencies]
+dev = ["pytest", "black", "pylint"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+include = '\.pyi?$'
+exclude = '''
+/(
+  \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.pylint.MASTER]
+ignore = ["__pycache__", "build", "dist", ".venv"]
+jobs = 1
+
+[tool.pylint.FORMAT]
+max-line-length = 88
+
+[tool.pylint.MESSAGES CONTROL]
+disable = [
+    "C0114",
+    "C0115",
+    "C0116",
+]
