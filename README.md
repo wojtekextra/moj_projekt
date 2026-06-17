@@ -1,19 +1,21 @@
-# Kalkulator matematyczny
+# Kalkulator Projekt
 
-Aplikacja CLI realizująca podstawowe i zaawansowane obliczenia matematyczne.
+Projekt kalkulatora z automatyzacją CI.
 
-Funkcje:
-- podstawowe działania: dodawanie, odejmowanie, mnożenie, dzielenie
-- potęgi i pierwiastki
-- trygonometria w stopniach
-- logarytmy
-- statystyka: średnia, mediana, dominanta, odchylenie standardowe
-- teoria liczb: sprawdzanie liczby pierwszej, czynniki pierwsze
-- geometria: pola figury
-- równania kwadratowe
+## Quick Start
+1. Sklonuj repozytorium.
+2. Zainicjuj środowisko i zainstaluj zależności:
+   `bash scripts/create_venv.sh`
+3. Aktywuj środowisko: `source venv/bin/activate` (Windows: `source venv/Scripts/activate`)
 
-Uruchomienie:
+## Uruchamianie narzędzi
+- **Testy:** `bash scripts/test.sh`
+- **Linting:** `bash scripts/lint.sh`
+- **Formatowanie:** `bash scripts/format_check.sh`
 
-```bash
-python main.py
-```
+## Pipeline CI
+Projekt używa GitHub Actions. Każdy `push` do gałęzi `main` lub `develop` automatycznie uruchamia:
+1. Instalację środowiska.
+2. Sprawdzenie formatowania (Black).
+3. Analizę statyczną (Pylint).
+4. Testy jednostkowe (pytest).

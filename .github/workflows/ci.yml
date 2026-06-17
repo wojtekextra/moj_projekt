@@ -32,3 +32,6 @@ jobs:
 
       - name: Test with pytest
         run: bash scripts/test.sh
+    
+      - name: Format check
+        run: black --check --exclude=venv .
