@@ -57,12 +57,18 @@ def root(value: float, degree: float = 2.0) -> float:
         raise ValueError("Stopień pierwiastka nie może być zerem.")
     if value < 0 and degree % 2 == 0:
         raise ValueError("Nie można obliczyć parzystego pierwiastka z liczby ujemnej.")
-    return math.copysign(abs(value) ** (1.0 / degree), value) if value < 0 else value ** (1.0 / degree)
+    return (
+        math.copysign(abs(value) ** (1.0 / degree), value)
+        if value < 0
+        else value ** (1.0 / degree)
+    )
 
 
 def factorial(n: int) -> int:
     if n < 0:
-        raise ValueError("Silnia jest zdefiniowana tylko dla liczb całkowitych nieujemnych.")
+        raise ValueError(
+            "Silnia jest zdefiniowana tylko dla liczb całkowitych nieujemnych."
+        )
     result = 1
     for i in range(2, n + 1):
         result *= i
@@ -116,7 +122,11 @@ def solve_quadratic(a: float, b: float, c: float) -> Tuple[Union[float, complex]
         raise ValueError("Współczynnik a nie może być zerem w równaniu kwadratowym.")
     delta = b * b - 4 * a * c
     if delta < 0:
-        return tuple(sorted(((-b + math.sqrt(delta)) / (2 * a), (-b - math.sqrt(delta)) / (2 * a))))
+        return tuple(
+            sorted(
+                ((-b + math.sqrt(delta)) / (2 * a), (-b - math.sqrt(delta)) / (2 * a))
+            )
+        )
     root1 = (-b + math.sqrt(delta)) / (2 * a)
     root2 = (-b - math.sqrt(delta)) / (2 * a)
     return (root1, root2) if root1 <= root2 else (root2, root1)
@@ -166,7 +176,7 @@ def median(values: Iterable[float]) -> float:
     numbers = sorted(_validate_numeric_list(values))
     n = len(numbers)
     mid = n // 2
-    return (numbers[mid] if n % 2 == 1 else (numbers[mid - 1] + numbers[mid]) / 2)
+    return numbers[mid] if n % 2 == 1 else (numbers[mid - 1] + numbers[mid]) / 2
 
 
 def mode(values: Iterable[float]) -> List[float]:

@@ -53,7 +53,7 @@ def prompt_list(prompt: str) -> list[float]:
     while True:
         text = input(prompt).strip()
         try:
-            values = [float(part) for part in text.replace(',', ' ').split() if part]
+            values = [float(part) for part in text.replace(",", " ").split() if part]
             if not values:
                 raise ValueError
             return values
@@ -131,7 +131,9 @@ def main() -> None:
         elif choice == "6":
             value = prompt_int("Podaj liczbę całkowitą: ")
             print_result("Czy pierwsza", is_prime(value))
-            print_result("NWD z 1..10", gcd(value, prompt_int("Podaj drugą liczbę całkowitą: ")))
+            print_result(
+                "NWD z 1..10", gcd(value, prompt_int("Podaj drugą liczbę całkowitą: "))
+            )
             print_result("Czynniki pierwsze", prime_factors(value))
 
         elif choice == "7":

@@ -44,15 +44,32 @@ class CalculatorGUI(tk.Tk):
         self.menu_frame.pack(side=tk.LEFT, fill=tk.Y, padx=10, pady=10)
 
         self.content_frame = tk.Frame(self, bd=2, relief=tk.GROOVE, padx=10, pady=10)
-        self.content_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=10, pady=10)
+        self.content_frame.pack(
+            side=tk.LEFT, fill=tk.BOTH, expand=True, padx=10, pady=10
+        )
 
-        self.header_label = tk.Label(self.content_frame, text="Wybierz kategorię obliczeń", font=(None, 16, "bold"))
+        self.header_label = tk.Label(
+            self.content_frame,
+            text="Wybierz kategorię obliczeń",
+            font=(None, 16, "bold"),
+        )
         self.header_label.pack(anchor="w", pady=(0, 10))
 
         self.content_area = tk.Frame(self.content_frame)
         self.content_area.pack(fill=tk.BOTH, expand=True)
 
-        self.output_label = tk.Label(self.content_frame, text="", justify=tk.LEFT, anchor="nw", bg="#f3f3f3", bd=1, relief=tk.SUNKEN, padx=8, pady=8, wraplength=620)
+        self.output_label = tk.Label(
+            self.content_frame,
+            text="",
+            justify=tk.LEFT,
+            anchor="nw",
+            bg="#f3f3f3",
+            bd=1,
+            relief=tk.SUNKEN,
+            padx=8,
+            pady=8,
+            wraplength=620,
+        )
         self.output_label.pack(fill=tk.BOTH, pady=(10, 0), expand=False)
 
         categories = [
@@ -114,7 +131,9 @@ class CalculatorGUI(tk.Tk):
 
             self.show_output("\n".join(results))
 
-        tk.Button(self.content_area, text="Oblicz", command=calculate, width=20).grid(row=3, column=0, columnspan=2, pady=14)
+        tk.Button(self.content_area, text="Oblicz", command=calculate, width=20).grid(
+            row=3, column=0, columnspan=2, pady=14
+        )
 
     def show_powers(self):
         self.header_label.config(text="Potęgi i pierwiastki")
@@ -142,7 +161,9 @@ class CalculatorGUI(tk.Tk):
                 results = [str(error)]
             self.show_output("\n".join(results))
 
-        tk.Button(self.content_area, text="Oblicz", command=calculate, width=20).grid(row=4, column=0, columnspan=2, pady=14)
+        tk.Button(self.content_area, text="Oblicz", command=calculate, width=20).grid(
+            row=4, column=0, columnspan=2, pady=14
+        )
 
     def show_trigonometry(self):
         self.header_label.config(text="Trygonometria")
@@ -163,7 +184,9 @@ class CalculatorGUI(tk.Tk):
             ]
             self.show_output("\n".join(results))
 
-        tk.Button(self.content_area, text="Oblicz", command=calculate, width=20).grid(row=1, column=0, columnspan=2, pady=14)
+        tk.Button(self.content_area, text="Oblicz", command=calculate, width=20).grid(
+            row=1, column=0, columnspan=2, pady=14
+        )
 
     def show_logarithm(self):
         self.header_label.config(text="Logarytmy")
@@ -183,12 +206,16 @@ class CalculatorGUI(tk.Tk):
             except Exception:
                 messagebox.showerror("Błąd", "Wprowadź poprawne dane.")
 
-        tk.Button(self.content_area, text="Oblicz", command=calculate, width=20).grid(row=2, column=0, columnspan=2, pady=14)
+        tk.Button(self.content_area, text="Oblicz", command=calculate, width=20).grid(
+            row=2, column=0, columnspan=2, pady=14
+        )
 
     def show_statistics(self):
         self.header_label.config(text="Statystyka")
         self.clear_content()
-        tk.Label(self.content_area, text="Liczby oddzielone spacjami lub przecinkami:").grid(row=0, column=0, columnspan=2, sticky="w", pady=4)
+        tk.Label(
+            self.content_area, text="Liczby oddzielone spacjami lub przecinkami:"
+        ).grid(row=0, column=0, columnspan=2, sticky="w", pady=4)
         values_entry = tk.Entry(self.content_area, width=60)
         values_entry.grid(row=1, column=0, columnspan=2, pady=4)
 
@@ -206,9 +233,13 @@ class CalculatorGUI(tk.Tk):
                 ]
                 self.show_output("\n".join(results))
             except ValueError:
-                messagebox.showerror("Błąd", "Wprowadź co najmniej jedną poprawną liczbę.")
+                messagebox.showerror(
+                    "Błąd", "Wprowadź co najmniej jedną poprawną liczbę."
+                )
 
-        tk.Button(self.content_area, text="Oblicz", command=calculate, width=20).grid(row=2, column=0, columnspan=2, pady=14)
+        tk.Button(self.content_area, text="Oblicz", command=calculate, width=20).grid(
+            row=2, column=0, columnspan=2, pady=14
+        )
 
     def show_number_theory(self):
         self.header_label.config(text="Teoria liczb")
@@ -230,12 +261,16 @@ class CalculatorGUI(tk.Tk):
             ]
             self.show_output("\n".join(results))
 
-        tk.Button(self.content_area, text="Oblicz", command=calculate, width=20).grid(row=2, column=0, columnspan=2, pady=14)
+        tk.Button(self.content_area, text="Oblicz", command=calculate, width=20).grid(
+            row=2, column=0, columnspan=2, pady=14
+        )
 
     def show_geometry(self):
         self.header_label.config(text="Geometria")
         self.clear_content()
-        tk.Label(self.content_area, text="Wybierz figurę:").grid(row=0, column=0, sticky="w", pady=4)
+        tk.Label(self.content_area, text="Wybierz figurę:").grid(
+            row=0, column=0, sticky="w", pady=4
+        )
         shape_var = tk.StringVar(value="circle")
 
         def build_inputs():
@@ -254,28 +289,49 @@ class CalculatorGUI(tk.Tk):
                 self.create_entry("Podstawa:", 2)
                 self.create_entry("Wysokość:", 3)
 
-        tk.OptionMenu(self.content_area, shape_var, "circle", "rectangle", "triangle", command=lambda _: build_inputs()).grid(row=0, column=1, sticky="w")
+        tk.OptionMenu(
+            self.content_area,
+            shape_var,
+            "circle",
+            "rectangle",
+            "triangle",
+            command=lambda _: build_inputs(),
+        ).grid(row=0, column=1, sticky="w")
         build_inputs()
 
         def calculate():
             shape = shape_var.get()
             try:
                 if shape == "circle":
-                    radius = float(self.content_area.grid_slaves(row=2, column=1)[0].get())
+                    radius = float(
+                        self.content_area.grid_slaves(row=2, column=1)[0].get()
+                    )
                     result = area_circle(radius)
                     self.show_output(f"Pole koła: {result}")
                 elif shape == "rectangle":
-                    width = float(self.content_area.grid_slaves(row=2, column=1)[0].get())
-                    height = float(self.content_area.grid_slaves(row=3, column=1)[0].get())
-                    self.show_output(f"Pole prostokąta: {area_rectangle(width, height)}")
+                    width = float(
+                        self.content_area.grid_slaves(row=2, column=1)[0].get()
+                    )
+                    height = float(
+                        self.content_area.grid_slaves(row=3, column=1)[0].get()
+                    )
+                    self.show_output(
+                        f"Pole prostokąta: {area_rectangle(width, height)}"
+                    )
                 else:
-                    base = float(self.content_area.grid_slaves(row=2, column=1)[0].get())
-                    height = float(self.content_area.grid_slaves(row=3, column=1)[0].get())
+                    base = float(
+                        self.content_area.grid_slaves(row=2, column=1)[0].get()
+                    )
+                    height = float(
+                        self.content_area.grid_slaves(row=3, column=1)[0].get()
+                    )
                     self.show_output(f"Pole trójkąta: {area_triangle(base, height)}")
             except Exception:
                 messagebox.showerror("Błąd", "Wprowadź poprawne dane.")
 
-        tk.Button(self.content_area, text="Oblicz", command=calculate, width=20).grid(row=4, column=0, columnspan=2, pady=14)
+        tk.Button(self.content_area, text="Oblicz", command=calculate, width=20).grid(
+            row=4, column=0, columnspan=2, pady=14
+        )
 
     def show_quadratic(self):
         self.header_label.config(text="Równanie kwadratowe")
@@ -296,7 +352,9 @@ class CalculatorGUI(tk.Tk):
             except Exception:
                 messagebox.showerror("Błąd", "Wprowadź poprawne dane.")
 
-        tk.Button(self.content_area, text="Oblicz", command=calculate, width=20).grid(row=3, column=0, columnspan=2, pady=14)
+        tk.Button(self.content_area, text="Oblicz", command=calculate, width=20).grid(
+            row=3, column=0, columnspan=2, pady=14
+        )
 
 
 if __name__ == "__main__":
